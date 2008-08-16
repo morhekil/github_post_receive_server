@@ -35,7 +35,7 @@ module GithubPostReceiveServer
       payload = JSON.parse(payload)
       
       puts "cd /var/git/#{payload['repository']['name']} && git pull"
-      system("cd /var/git/#{payload['repository']['name']} && git pull"
+      system("cd /var/git/#{payload['repository']['name']} && git pull")
       
       @res.write THANK_YOU_COMMENT
     end
