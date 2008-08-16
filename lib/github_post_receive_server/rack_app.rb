@@ -30,11 +30,12 @@ module GithubPostReceiveServer
       
       return rude_comment if payload.nil?
       
-      puts payload unless $TESTING # remove me!
+      # puts payload unless $TESTING # remove me!
       
       payload = JSON.parse(payload)
       
-      # ... Your code goes here! ...
+      puts "cd /var/git/#{payload['repository']['name']} && git pull"
+      system("cd /var/git/#{payload['repository']['name']} && git pull"
       
       @res.write THANK_YOU_COMMENT
     end
