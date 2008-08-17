@@ -35,7 +35,7 @@ module GithubPostReceiveServer
       payload = JSON.parse(payload)
       
       puts "cd /var/git/#{payload['repository']['name']} && git pull"
-      system("cd /var/git/#{payload['repository']['name']} && git pull")
+      system("cd /var/git/#{payload['repository']['name']} && git pull && cd /var/www/redmine/current && rake redmine:fetch_changesets")
       
       @res.write THANK_YOU_COMMENT
     end
